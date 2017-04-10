@@ -69,7 +69,7 @@ function webcamFeed (){
   var canvas = document.getElementById('canvas');
   var context = canvas.getContext('2d');
 
-  var tracker = new tracking.ObjectTracker(['face', 'eye','mouth']);
+  var tracker = new tracking.ObjectTracker(['face']);
   tracker.setInitialScale(1);
   tracker.setStepSize(2);
   tracker.setEdgesDensity(0.1);
@@ -136,7 +136,7 @@ function startTracking() {
   faceTracker.on('track', handleTrackingEvent);
 
   // Start tracking
-  tracking.track('#webcam', faceTracker);
+  tracking.track('#video', faceTracker);
 
 
 
@@ -158,14 +158,14 @@ function checkCam () {
   timeSinceFace += 100;
   // Note this is set back to 0 every frame that the tracker detects a face.
 
-  // Check whether it's been too long since we saw a face
-  if (timeSinceFace > MAX_TIME_SINCE_FACE) {
-    console.log('show webcam')
-    // If so, show the webcamfeed
-    // $('#webcam').css({
-    //   visibility: 'visible'
-    // });
-  }
+  // // Check whether it's been too long since we saw a face
+  // if (timeSinceFace > MAX_TIME_SINCE_FACE) {
+  //   console.log('show webcam')
+  //   // If so, show the webcamfeed
+  //   // $('#webcam').css({
+  //   //   visibility: 'visible'
+  //   // });
+  // }
 }
 
 // handleTrackingEvent
@@ -174,7 +174,7 @@ function checkCam () {
 function handleTrackingEvent (event) {
   // Check if anything was tracked (a face)
   if (event.data.length === 0) {
-    console.log('...')
+    console.log('no face')
     // No faces were detected in this frame.
   }
   else {
