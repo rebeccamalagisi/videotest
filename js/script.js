@@ -7,30 +7,30 @@ const ANIMATION_DURATION = 500;
 const MAX_TIME_SINCE_FACE = 100;
 var timeSinceFace = 1000;
 
-// var noStrings = [
-//   "Where are you?",
-//   "Where did you go?",
-//   "I miss you.",
-//   "I can't see you.",
-//   "Come back.",
-//   "I'm so lonely.",
-//   "Why do you keep leaving me?",
-//   "Don't be shy.",
-//   "I wish you'd show me your face.",
-//   "Please don't hide from me."
-// ];
-// var yesStrings = [
-//   "There you are.",
-//   "Welcome back.",
-//   "Hey there, friend.",
-//   "I'm glad you're back.",
-//   "I missed you, pal.",
-//   "Stay with me for a while.",
-//   "You look so serious.",
-//   "You have nice eyes.",
-//   "You're so intriguing to watch.",
-//   "I wish I knew more about you."
-// ];
+var noStrings = [
+  "Where are you?",
+  "Where did you go?",
+  "I miss you.",
+  "I can't see you.",
+  "Come back.",
+  "I'm so lonely.",
+  "Why do you keep leaving me?",
+  "Don't be shy.",
+  "I wish you'd show me your face.",
+  "Please don't hide from me."
+];
+var yesStrings = [
+  "There you are.",
+  "Welcome back.",
+  "Hey there, friend.",
+  "I'm glad you're back.",
+  "I missed you, pal.",
+  "Stay with me for a while.",
+  "You look so serious.",
+  "You have nice eyes.",
+  "You're so intriguing to watch.",
+  "I wish I knew more about you."
+];
 
 
 ////////////////////////////////////////////////////
@@ -174,11 +174,11 @@ function checkCam () {
 function handleTrackingEvent (event) {
   // Check if anything was tracked (a face)
   if (event.data.length === 0) {
-    console.log('no face')
+    console.log(getRandomString(noStrings))
     // No faces were detected in this frame.
   }
   else {
-    console.log('a face!')
+    console.log(getRandomString(yesStrings))
     // We found a face!
     // Reset the time since we saw a face to 0
     timeSinceFace = 0;
@@ -250,11 +250,11 @@ function handleTrackingEvent (event) {
 //
 //
 //
-// // getRandomString (array)
-// //
-// // A helper function that just returns a random string from the provided
-// // array. This is a classic way to select a random element from an array.
-// function getRandomString(array) {
-//   var randomIndex = Math.floor(Math.random() * array.length);
-//   return array[randomIndex];
-// }
+// getRandomString (array)
+//
+// A helper function that just returns a random string from the provided
+// array. This is a classic way to select a random element from an array.
+function getRandomString(array) {
+  var randomIndex = Math.floor(Math.random() * array.length);
+  return array[randomIndex];
+}
